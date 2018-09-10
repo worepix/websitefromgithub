@@ -17,12 +17,6 @@ def cli(run, repository, install):
     
     settings_location = "/etc/websitefromgithub/"
     
-    if not os.path.exists(settings_location):
-        os.makedirs(settings_location)
-        os.system("cd " + settings_location)
-        settings_file = open("settings.json")
-        settings_file.write(requests.get("https://raw.githubusercontent.com/worepix/websitefromgithub/settings.json").text)
-    
     osname = os.name
     
     githubrepository = str(json.loads(open(settings_location + "settings.json", "r+").read())["GitHub"]) + ".git"
@@ -36,6 +30,13 @@ def cli(run, repository, install):
         os.system("mv /var/www/html/public/ /var/www/html/html/")
        
     if repository:
+
+        if not os.path.exists(settings_location):
+            os.makedirs(settings_location)
+            os.system("cd " + settings_location)
+            settings_file = open("settings.json")
+            settings_file.write(requests.get("https://raw.githubusercontent.com/worepix/websitefromgithub/settings.json").text)
+
         set_repository = input("Paste your GitHub repository. For example: https://github.com/worepix/websitefromgithub\n")
         open(settings_location + "settings.json", "w").write('''{\n    "GitHub": "'''+ set_repository + '''"\n}''')
 
