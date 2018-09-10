@@ -2,7 +2,6 @@
 # -*- utf-8 -*-
 import requests
 import click
-from pathlib import Path
 import json
 import os
 import requests
