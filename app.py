@@ -33,8 +33,8 @@ def cli(run, repository, install):
         if not os.path.exists(settings_location):
             os.makedirs(settings_location)
             os.system("cd " + settings_location)
-            settings_file = open("settings.json")
             settings_file.write(requests.get("https://raw.githubusercontent.com/worepix/websitefromgithub/master/settings.json").text)
+            settings_file = open("settings.json")
 
         set_repository = input("Paste your GitHub repository. For example: https://github.com/worepix/websitefromgithub\n")
         open(settings_location + "settings.json", "w").write('''{\n    "GitHub": "'''+ set_repository + '''"\n}''')
