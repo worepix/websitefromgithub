@@ -18,9 +18,9 @@ def cli(run, repository, install):
     
     osname = os.name
     
-    githubrepository = str(json.loads(open(settings_location + "settings.json", "r+").read())["GitHub"]) + ".git"
-    
     if run:
+        githubrepository = str(json.loads(open(settings_location + "settings.json", "r+").read())["GitHub"]) + ".git"
+        
         githubrepository_name = githubrepository.split("/")
         os.system("git clone " + githubrepository)
         os.system("cd " + str(githubrepository_name[4])[:-4])
