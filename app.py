@@ -23,7 +23,7 @@ def cli(run, repository, install):
         githubrepository_name = githubrepository.split("/")
         
         os.system("git clone " + githubrepository + " /etc/websitefromgithub/" +  str(githubrepository_name[4])[:-4] + "/")
-        os.system("/etc/websitefromgithub/hugo")
+        os.system("hugo /etc/websitefromgithub/" + str(githubrepository_name[4])[:-4])
         os.system("mv /etc/websitefromgithub/" + str(githubrepository_name[4])[:-4] + "public/" + " /var/www/")
         os.system("mv /var/www/html/public/ /var/www/html/html/")
        
