@@ -22,6 +22,7 @@ def cli(run, repository, install):
         githubrepository = str(json.loads(open(settings_location + "settings.json", "r+").read())["GitHub"]) + ".git"
         githubrepository_name = githubrepository.split("/")
         
+        os.system("rm -rf " + settings_location + str(githubrepository_name[4])[:-4])
         os.system("git clone " + githubrepository + " /etc/websitefromgithub/" +  str(githubrepository_name[4])[:-4] + "/")
         os.system("cd /etc/websitefromgithub/" + str(githubrepository_name[4])[:-4] + " && hugo")
         os.system("mv /etc/websitefromgithub/" + str(githubrepository_name[4])[:-4] + "/public/" + " /var/www/")
