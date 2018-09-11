@@ -24,7 +24,7 @@ def cli(run, repository, install):
         
         os.system("git clone " + githubrepository + " /etc/websitefromgithub/" +  str(githubrepository_name[4])[:-4] + "/")
         os.system("cd /etc/websitefromgithub/" + str(githubrepository_name[4])[:-4] + " && hugo")
-        os.system("mv /etc/websitefromgithub/" + str(githubrepository_name[4])[:-4] + "public/" + " /var/www/")
+        os.system("mv /etc/websitefromgithub/" + str(githubrepository_name[4])[:-4] + "/public/" + " /var/www/")
         os.system("mv /var/www/html/public/ /var/www/html/html/")
        
     if repository:
