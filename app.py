@@ -22,8 +22,8 @@ def cli(run, repository, install):
         githubrepository = str(json.loads(open(settings_location + "settings.json", "r+").read())["GitHub"]) + ".git"
         
         githubrepository_name = githubrepository.split("/")
-        os.system("git clone " + githubrepository)
         os.system("cd " + str(githubrepository_name[4])[:-4])
+        os.system("git clone " + githubrepository)
         os.system("hugo")
         os.system("mv public/ /var/www/html/")
         os.system("mv /var/www/html/public/ /var/www/html/html/")
@@ -35,7 +35,7 @@ def cli(run, repository, install):
             settings_file = open(settings_location + "settings.json", "w")
             settings_file.write(requests.get("https://raw.githubusercontent.com/worepix/websitefromgithub/master/settings.json").text)
 
-        set_repository = input("Paste your GitHub repository. For example: https://github.com/worepix/websitefromgithub\n")
+        set_repository = raw_input("Paste your GitHub repository. For example: https://github.com/worepix/websitefromgithub\n")
         open(settings_location + "settings.json", "w").write('''{\n    "GitHub": "'''+ str(set_repository) + '''"\n}''')
 
     if install:
