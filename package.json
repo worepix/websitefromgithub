@@ -1,0 +1,17 @@
+{
+    "name": "websitefromgithub",
+    "version": "1.0.0",
+    "scripts": {
+        "start": "node websitefromgithub.js"
+    },
+    "dependencies": {
+        "checksum": "^0.1.1",
+        "delay": "^4.0.1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/worepix/websitefromgithub.git"
+    },
+    "author": "HARDWARIO",
+    "license": "MIT"
+}
