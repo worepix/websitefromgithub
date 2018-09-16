@@ -38,7 +38,7 @@ function check() {
     console.log(GitHub_url);
     console.log((GitHub_name[4].toString()).substring(0, ((GitHub_name[4].toString()).length)-4))
     checksum.file(localgit, function (err, sum) {
-        local_checksumgit = cs;
+        local_checksumgit = sum;
      });
      if (fs.existsSync(localgitchecksum_folder)) {
         execSync("rm -rf " + localgitchecksum_folder);
@@ -50,7 +50,7 @@ function check() {
      }
     
      checksum.file(GitHubgit, function (err, sum) {
-        GitHub_checksumgit = cs;
+        GitHub_checksumgit = sum;
      });
 
      if (GitHub_checksumgit == local_checksumgit) {
