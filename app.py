@@ -15,21 +15,15 @@ import requests
 def cli(run, repository, install):
     
     settings_location = "/etc/websitefromgithub/"
-    
-    osname = os.name
-    
+
     if run:
         githubrepository = str(json.loads(open(settings_location + "settings.json", "r+").read())["GitHub"]) + ".git"
         githubrepository_name = githubrepository.split("/")
-
-        if not os.path.exists(settings_location + str(githubrepository_name[4])[:-4] + "/public/"):
-            os.system("rm -rf " + settings_location + str(githubrepository_name[4])[:-4] + "/public/")
-
-        
-        os.system("rm -rf " + settings_location + str(githubrepository_name[4])[:-4])
-        os.system("git clone " + githubrepository + " /etc/websitefromgithub/" +  str(githubrepository_name[4])[:-4] + "/")
-        os.system("cd /etc/websitefromgithub/" + str(githubrepository_name[4])[:-4] + " && hugo -D")
-        os.system("cp -rf " + settings_location + str(githubrepository_name[4])[:-4] + "/public/" + " /var/www/")
+    
+        os.system("rm -rf ~/ " + str(githubrepository_name[4])[:-4])
+        os.system("git clone " + githubrepository + " ~/")
+        os.system("cd ~/" + str(githubrepository_name[4])[:-4] + " && hugo -D")
+        os.system("cp -rf ~/ " + str(githubrepository_name[4])[:-4] + "/public/" + " /var/www/")
         os.system("rm -rf /var/www/html/")
         os.system("mv /var/www/public /var/www/html")
 
@@ -43,37 +37,3 @@ def cli(run, repository, install):
 
         set_repository = raw_input("Paste your GitHub repository. For example: https://github.com/worepix/websitefromgithub\n")
         open(settings_location + "settings.json", "w").write('''{\n    "GitHub": "'''+ str(set_repository) + '''"\n}''')
-
-    if install:
-        if osname == "Linux":
-            linux_distro = input("Choose your Linux distro: Ubuntu, ArchLinux, Fedora, RedHat and CentOS. Type distro like you see here.\n").lower()
-            if linux_distro == "ubuntu":
-                os.system("sudo apt-get install hugo")
-                
-                git_installed_ubuntu = input("Do you have git installed? yes or no. Type yes if you don't know\n")
-                if git_installed_ubuntu == "yes" or git_installed_ubuntu == "y":
-                    None
-                else:
-                    os.system("sudo apt-get install git")
-            
-            elif linux_distro == "archlinux":
-                os.system("sudo pacman -Syu hugo")
-                
-                git_installed_arch = input("Do you have git installed? yes or no. Type yes if you don't know\n")
-                if git_installed_arch == "yes" or git_installed_arch == "y":
-                    None
-                else:
-                    os.system("sudo pacman -S git")
-            
-            elif linux_distro == "fedora" or linux_distro == "RedHat" or linux_distro == "centos":
-                os.system("sudo dnf install hugo")
-                
-                git_installed_fedora = input("Do you have git installed? yes or no. Type yes if you don't know\n")
-                if git_installed_fedora == "yes" or git_installed_fedora == "y":
-                    None
-                else:
-                    os.system("sudo dnf install git")
-                
-
-        else:
-            print("Your system is on supported yet. Soon!")
