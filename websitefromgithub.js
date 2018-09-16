@@ -5,7 +5,7 @@ var fs = require('fs');
 var GitHub_url;
 var GitHub_name;
 var localgit;
-var GitHubgit = "/etc/websitefromurl/localgitchecksum/";
+var GitHubgit = "/etc/websitefromurl/localgitchecksum/.git/logs/HEAD";
 var settingsfile= "/etc/websitefromgithub/settings.json";
 var local_checksumgit;
 var GitHub_checksumgit;
