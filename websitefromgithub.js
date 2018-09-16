@@ -61,4 +61,7 @@ function check() {
         execSync("websitefromgithub --run");
      }
 
+     console.log(GitHub_checksumgit);
+     console.log(local_checksumgit);
+
 }
