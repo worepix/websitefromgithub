@@ -4,7 +4,7 @@ var checkper = 1000;
 var fs = require('fs');
 var GitHub_url;
 var GitHub_name;
-var localgit = "/etc/websitefromgithub/" + (GitHub_name[4].toString()).substring(0, ((GitHub_name[4].toString()).length)-4) + "/.git/logs/HEAD";
+var localgit;
 var GitHubgit = "/etc/websitefromurl/localgitchecksum/";
 var settingsfile= "/etc/websitefromgithub/settings.json";
 var local_checksumgit;
@@ -20,6 +20,7 @@ function getgithub(){
     fs.readFile(settingsfile, (err, data) => {
         GitHub_url = JSON.parse(data.toString()).GitHub + ".git";
         GitHub_name = GitHub_url.split("/");
+        localgit = "/etc/websitefromgithub/" + (GitHub_name[4].toString()).substring(0, ((GitHub_name[4].toString()).length)-4) + "/.git/logs/HEAD"
 
     });
 }
