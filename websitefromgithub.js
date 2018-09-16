@@ -6,11 +6,10 @@ var GitHub_url;
 var Github_name;
 var localgit = "/etc/websitefromgithub/" + Github_name + "/.git/logs/HEAD";
 var GitHubgit = "/etc/websitefromurl/localgitchecksum/";
-var settingsfile= "/etc/webfromgithub/settings.json";
+var settingsfile= "/etc/websitefromgithub/settings.json";
 var local_checksumgit;
 var GitHub_checksumgit;
 var fs = require('fs');
-var localgitchecksum = "/etc/websitefromurl/localgitchecksum/" + GitHub_name[4] + "/";
 var localgitchecksum_folder = "/etc/websitefromurl/localgitchecksum/";
 
 getgithub();
@@ -35,9 +34,9 @@ function counter() {
 
 function check() {
     console.log(GitHub_url);
-    console.log(GitHub_name[4])
+    console.log(GitHub_name[4]-4)
     checksum.file(localgit, function (err, sum) {
-        local_checksumgit = sum;
+        local_checksumgit = cs;
      });
      if (fs.existsSync(localgitchecksum_folder)) {
          exec("rm -rf " + localgitchecksum_folder);
@@ -49,7 +48,7 @@ function check() {
      }
     
      checksum.file(GitHubgit, function (err, sum) {
-        GitHub_checksumgit = sum;
+        GitHub_checksumgit = cs;
      });
 
      if (GitHub_checksumgit == local_checksumgit) {
