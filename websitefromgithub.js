@@ -15,15 +15,6 @@ var localgitchecksum_folder = "/etc/websitefromurl/localgitchecksum/";
 
 counter();
 
-
-function getgithub(){
-    fs.readFile(settingsfile, (err, data) => {
-        GitHub_url = JSON.parse(data.toString()).GitHub + ".git";
-        GitHub_name = GitHub_url.split("/");
-
-    });
-}
-
 function counter() {
 (async () => {
     await delay(checkper);
