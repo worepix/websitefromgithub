@@ -19,7 +19,7 @@ counter();
 function getgithub(){
     fs.readFile(settingsfile, (err, data) => {
         GitHub_url = JSON.parse(data.toString()).GitHub + ".git";
-        GitHub_name = GitHub_url.split("/");
+        GitHub_name = GitHub_url.split("/").substring(0, -4);
 
     });
 }
@@ -34,7 +34,7 @@ function counter() {
 
 function check() {
     console.log(GitHub_url);
-    console.log(GitHub_name[4]-4)
+    console.log(GitHub_name[4])
     checksum.file(localgit, function (err, sum) {
         local_checksumgit = cs;
      });
