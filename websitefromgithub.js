@@ -13,7 +13,17 @@ var fs = require('fs');
 var localgitchecksum = "/etc/websitefromurl/localgitchecksum/" + GitHub_name[4] + "/";
 var localgitchecksum_folder = "/etc/websitefromurl/localgitchecksum/";
 
+getgithub();
 counter();
+
+
+function getgithub(){
+    fs.readFile(settingsfile, (err, data) => {
+        GitHub_url = JSON.parse(data.toString()).GitHub + ".git";
+        GitHub_name = GitHub_url.split("/");
+
+    });
+}
 
 function counter() {
 (async () => {
