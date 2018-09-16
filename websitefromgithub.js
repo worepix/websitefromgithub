@@ -4,17 +4,21 @@ var checkper = 1000;
 var fs = require('fs');
 var GitHub_url;
 var Github_name;
-var localgit = "/etc/" + Github_name + "/.git/logs/HEAD";
+var localgit = "/etc/websitefromgithub/" + Github_name + "/.git/logs/HEAD";
+var GitHubgit = "/etc/websitefromurl/localgitchecksum/";
 var settingsfile= "/etc/webfromgithub/settings.json";
 var local_checksumgit;
+var GitHub_checksumgit;
+var fs = require('fs');
+var localgitchecksum = "/etc/websitefromurl/localgitchecksum/" + GitHub_name[4] + "/";
+var localgitchecksum_folder = "/etc/websitefromurl/localgitchecksum/";
 
-getgithub();
 counter();
 
 
 function getgithub(){
     fs.readFile(settingsfile, (err, data) => {
-        GitHub_url = JSON.parse(data.toString()).GitHub;
+        GitHub_url = JSON.parse(data.toString()).GitHub + ".git";
         GitHub_name = GitHub_url.split("/");
 
     });
@@ -32,6 +36,27 @@ function check() {
     console.log(GitHub_url);
     console.log(GitHub_name[4])
     checksum.file(localgit, function (err, sum) {
-        local_checksumgit = cs;
-     })
+        local_checksumgit = sum;
+     });
+     if (fs.existsSync(localgitchecksum_folder)) {
+         exec("rm -rf " + localgitchecksum_folder);
+         exec("git clone --no-checkout " + GitHub_url + " " + localgitchecksum_folder);
+     }
+
+     else {
+        exec("git clone --no-checkout " + GitHub_url + " " + localgitchecksum_folder);
+     }
+    
+     checksum.file(GitHubgit, function (err, sum) {
+        GitHub_checksumgit = sum;
+     });
+
+     if (GitHub_checksumgit == local_checksumgit) {
+         null;
+     }
+
+     else if (GitHub_checksumgit != local_checksumgit) {
+         exec("websitefromgithub --run");
+     }
+
 }
