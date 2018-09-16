@@ -21,6 +21,10 @@ def cli(run, repository, install):
     if run:
         githubrepository = str(json.loads(open(settings_location + "settings.json", "r+").read())["GitHub"]) + ".git"
         githubrepository_name = githubrepository.split("/")
+
+        if not os.path.exists(settings_location + str(githubrepository_name[4])[:-4] + "/public/"):
+            os.system("rm -rf " + settings_location + str(githubrepository_name[4])[:-4] + "/public/")
+
         
         os.system("rm -rf " + settings_location + str(githubrepository_name[4])[:-4])
         os.system("git clone " + githubrepository + " /etc/websitefromgithub/" +  str(githubrepository_name[4])[:-4] + "/")

@@ -21,7 +21,7 @@ function getgithub(){
     fs.readFile(settingsfile, (err, data) => {
         GitHub_url = JSON.parse(data.toString()).GitHub + ".git";
         GitHub_name = GitHub_url.split("/");
-        localgit = "/etc/websitefromgithub/" + (GitHub_name[4].toString()).substring(0, ((GitHub_name[4].toString()).length)-4) + "/.git/logs/HEAD"
+        localgit = "/etc/websitefromgithub/" + ((GitHub_name[4].toString()).substring(0, ((GitHub_name[4].toString()).length)-4)) + "/.git/logs/HEAD";
 
     });
 }
