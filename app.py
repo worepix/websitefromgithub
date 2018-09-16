@@ -21,7 +21,7 @@ def cli(run, repository, install):
         githubrepository_name = githubrepository.split("/")
     
         os.system("rm -rf /tmp/ " + str(githubrepository_name[4])[:-4])
-        os.system("git clone " + githubrepository + " /tmp/")
+        os.system("git clone " + githubrepository + " /tmp/" + str(githubrepository_name[4])[:-4] )
         os.system("cd /tmp/" + str(githubrepository_name[4])[:-4] + " && hugo -D")
         os.system("cp -rf /tmp/ " + str(githubrepository_name[4])[:-4] + "/public/" + " /var/www/")
         os.system("rm -rf /var/www/html/")
