@@ -1,4 +1,4 @@
-var checksum = require('checksum')
+const md5File = require('md5-file');
 var delay = require("delay");
 var checkper = 1000;
 var fs = require('fs');
@@ -37,9 +37,8 @@ function counter() {
 function check() {
     console.log(GitHub_url);
     console.log((GitHub_name[4].toString()).substring(0, ((GitHub_name[4].toString()).length)-4))
-    checksum.file(localgit, function (err, sum) {
-        cs = checksum('dshaw');
-        local_checksumgit = cs;
+    md5File.file(localgit, (err, hash) => {
+        local_checksumgit = hash;
      });
      if (fs.existsSync(localgitchecksum_folder)) {
         execSync("rm -rf " + localgitchecksum_folder);
@@ -50,9 +49,8 @@ function check() {
         execSync("git clone --no-checkout " + GitHub_url + " " + localgitchecksum_folder);
      }
     
-     checksum.file(GitHubgit, function (err, sum) {
-        cs = checksum('dshaw');
-        GitHub_checksumgit = cs;
+     md5File.file(GitHubgit, (err, hash) => {
+        GitHub_checksumgit = hash;
      });
 
      if (GitHub_checksumgit == local_checksumgit) {

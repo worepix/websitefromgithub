@@ -5,8 +5,8 @@
         "start": "node websitefromgithub.js"
     },
     "dependencies": {
-        "checksum": "^0.1.1",
-        "delay": "^4.0.1"
+        "delay": "^4.0.1",
+        "md5-file": "^4.0.0"
     },
     "repository": {
         "type": "git",
