@@ -34,7 +34,7 @@ function counter() {
 
 function check() {
     console.log(GitHub_url);
-    console.log((GitHub_name[4].toString()).substring(0, (((GitHub_name[4].toString()).lenght-4))))
+    console.log((GitHub_name[4].toString()).substring(0, ((GitHub_name[4].toString()).length)-4))
     checksum.file(localgit, function (err, sum) {
         local_checksumgit = cs;
      });
