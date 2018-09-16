@@ -37,19 +37,23 @@ function counter() {
 function check() {
     console.log(GitHub_url);
     console.log((GitHub_name[4].toString()).substring(0, ((GitHub_name[4].toString()).length)-4))
-    md5File.file(localgit, (err, hash) => {
+    md5File(localgit, (err, hash) => {
         local_checksumgit = hash;
      });
+
+    
      if (fs.existsSync(localgitchecksum_folder)) {
         execSync("rm -rf " + localgitchecksum_folder);
         execSync("git clone --no-checkout " + GitHub_url + " " + localgitchecksum_folder);
      }
 
+     
+
      else {
         execSync("git clone --no-checkout " + GitHub_url + " " + localgitchecksum_folder);
      }
     
-     md5File.file(GitHubgit, (err, hash) => {
+     md5File(GitHubgit, (err, hash) => {
         GitHub_checksumgit = hash;
      });
 
