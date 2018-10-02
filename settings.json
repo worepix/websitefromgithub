@@ -1,5 +1,5 @@
 {
-    "GitHub": "",
+    "GitHub": "https://github.com/worepix/radimkozak.com",
     "web_location": "/var/www/html/",
     "command": "hugo server -D"
 }
