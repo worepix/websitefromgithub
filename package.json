@@ -6,7 +6,8 @@
     },
     "dependencies": {
         "delay": "^4.0.1",
-        "md5-file": "^4.0.0"
+        "md5-file": "^4.0.0",
+        "rimraf": "^2.6.2"
     },
     "repository": {
         "type": "git",

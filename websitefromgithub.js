@@ -3,18 +3,31 @@ var delay = require("delay");
 var fs = require('fs');
 const { execSync } = require('child_process');
 var settingsfile = "settings.json"; // File where settings is located
+var rimraf = require('rimraf');
 
 var settings_GitHub_url;
 var settings_GitHub_name;
 var settings_web_location;
 var settings_command;
 var settings_frequency;
+var settings_exported_folder;
 
 getvariables();
 
 // Check for changes
 function check() {
-    console.log(settings_command);
+    console.log("start check");
+    if (fs.existsSync("git/" + settings_GitHub_name + "/")) {
+        console.log("removed and cloned");
+        rimraf.sync("git/");
+        execSync("git clone --no-checkout " + settings_GitHub_url + " git/" + settings_GitHub_name + "/");
+    }
+
+    else {
+        console.log("cloned");
+        execSync("git clone --no-checkout " + settings_GitHub_url + " git/" + settings_GitHub_name + "/");
+    }
+
 }
 
 
@@ -42,6 +55,8 @@ function getvariables(){
         settings_web_location = JSON.parse(data.toString()).web_location;
         settings_command = JSON.parse(data.toString()).command;
         settings_frequency = parseInt((JSON.parse(data.toString()).frequency).toString());
+        settings_exported_folder = JSON.parse(data.toString()).exported_folder;
+        console.log(settings_exported_folder);
         counter();
         }
     });
