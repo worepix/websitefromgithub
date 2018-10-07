@@ -1,7 +1,7 @@
 {
-    "GitHub": "https://github.com/worepix/radimkozak.com",
-    "web_location": "/var/www/html/",
+    "GitHub": "",
+    "web_location": "/var/www/html",
     "exported_folder": "public",
     "command": "hugo server -D",
-    "frequency": "10000"
+    "frequency": "3600000"
 }

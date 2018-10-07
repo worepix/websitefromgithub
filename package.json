@@ -1,13 +1,13 @@
 {
     "name": "websitefromgithub",
-    "version": "1.0.0",
+    "version": "0.1.0",
     "scripts": {
         "start": "node websitefromgithub.js"
     },
     "dependencies": {
         "delay": "^4.0.1",
-        "md5-file": "^4.0.0",
-        "rimraf": "^2.6.2"
+        "rimraf": "^2.6.2",
+        "fs-extra": "^7.0.0"
     },
     "repository": {
         "type": "git",
