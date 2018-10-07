@@ -63,7 +63,6 @@ function check() {
                 checksum_website = data.toString(); 
                 if (checksum_website == checksum_git) { // If checksum of git and website folders are equal, website is up to date
                     console.log("not updated");
-                    move();
                 }
 
                 else if (checksum_website != checksum_git) { // If not, clone new website repository
