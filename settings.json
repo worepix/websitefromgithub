@@ -2,6 +2,6 @@
     "GitHub": "",
     "web_location": "/var/www/html",
     "exported_folder": "public",
-    "command": "hugo server -D",
+    "command": "hugo -D",
     "frequency": "60"
 }

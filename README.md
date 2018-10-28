@@ -55,9 +55,9 @@ This utility is automaticly building website from your GitHub repository on your
     ```json
     "exported_folder": "public"
     ```
-    **command**: Command for building website. For Hugo I use `hugo server -D`. Example:
+    **command**: Command for building website. For Hugo I use `hugo -D`. Example:
     ```json
-    "command": "hugo server -D"
+    "command": "hugo -D"
     ```
     **frequency**: In what frequency is websitefromgithub script checking if it's new version of source code on GitHub. The value is in minutes. Example:
     ```json

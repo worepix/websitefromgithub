@@ -107,7 +107,7 @@ function getvariables(){
         settings_GitHub_name = settings_GitHub_url.split("/")[4].substring(0, ((settings_GitHub_url.split("/")[4]).toString()).length-4);
         settings_web_location = JSON.parse(data.toString()).web_location;
         settings_command = JSON.parse(data.toString()).command;
-        settings_frequency = parseInt((JSON.parse(data.toString()).frequency).toString())/1000/60;
+        settings_frequency = parseInt((JSON.parse(data.toString()).frequency).toString())*60000;
         settings_exported_folder = JSON.parse(data.toString()).exported_folder;
         counter();
         }
